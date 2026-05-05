@@ -1,0 +1,27 @@
+## --- Core LaTeX auxiliary files ---
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.out
+*.synctex*
+## --- Intermediate files (biên dịch hình ảnh, danh mục, v.v.) ---
+*.lof
+*.lot
+*.bbl
+*.blg
+*.pyg
+*.nav
+*.snm
+*.vrb
+
+## --- PDF Output ---
+# Mở comment dòng dưới nếu bạn KHÔNG muốn đẩy file PDF lên Git
+*.pdf
+
+## --- Thư mục Contents ---
+# Mặc định các quy tắc trên sẽ tự động áp dụng vào Contents/
+# Nếu bạn muốn đảm bảo không bao giờ bỏ lỡ file .tex trong đó:
+!Contents/*.tex
