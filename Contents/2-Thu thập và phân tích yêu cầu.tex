@@ -1,1 +1,63 @@
 \newpage
+\section{Thu thập và phân tích yêu cầu}
+
+\subsection{Các bên liên quan và mong muốn}
+
+\subsubsection{Người sử dụng (nông dân và hộ trồng cây)}
+Đây là nhóm đối tượng trực tiếp vận hành hệ thống để phục vụ nhu cầu tưới tiêu tự động nhằm tiết kiệm công sức, thời gian và nguồn nước. Họ có thể không am hiểu sâu về công nghệ nhưng mong muốn một giải pháp đơn giản và hiệu quả.
+\begin{itemize}
+    \item Theo dõi các chỉ số môi trường như nhiệt độ, độ ẩm không khí, độ ẩm đất và trạng thái ánh sáng qua ứng dụng hoặc website.
+    \item Hệ thống tự động tưới khi độ ẩm đất xuống dưới ngưỡng cài đặt hoặc theo chu kỳ thời gian định sẵn.
+    \item Khả năng bật/tắt thiết bị chiếu sáng và máy bơm từ xa.
+    \item Giao diện hiển thị trực quan, dễ hiểu trên màn hình LCD và ứng dụng di động.
+    % \item Nhận thông báo tức thời khi có sự cố như hỏng cảm biến, thiếu nước hoặc nhiệt độ vượt ngưỡng.
+    \item Truy xuất dữ liệu lịch sử để đánh giá hiệu quả và linh hoạt chuyển đổi giữa chế độ tự động và thủ công.
+\end{itemize}
+
+\subsubsection{Đội ngũ kỹ thuật và bảo trì}
+Đây là nhóm chịu trách nhiệm đảm bảo sự ổn định của phần cứng, phần mềm và các kết nối IoT trong hệ thống.
+\begin{itemize}
+    \item Cấu trúc hệ thống rõ ràng, dễ dàng kiểm tra và thay thế linh kiện khi phát hiện hỏng hóc.
+    \item Cảm biến hoạt động với độ chính xác cao, có khả năng lọc nhiễu dữ liệu.
+    % \item Hỗ trợ cập nhật phần mềm hoặc firmware từ xa (OTA) để khắc phục lỗi nhanh chóng.
+    \item Hệ thống lưu trữ nhật ký vận hành (log) chi tiết để phục vụ công tác chẩn đoán.
+    \item Máy chủ ổn định và có cơ chế sao lưu dữ liệu định kỳ.
+\end{itemize}
+
+\subsubsection{Người quản trị hệ thống}
+Người chịu trách nhiệm giám sát toàn bộ nền tảng, quản lý phân quyền và đưa ra các quyết định nâng cấp hệ thống.
+\begin{itemize}
+    \item Giao diện quản trị tổng thể (dashboard) để giám sát trạng thái của tất cả các thiết bị trong mạng lưới.
+    \item Quản lý tài khoản người dùng và phân cấp quyền hạn truy cập dữ liệu.
+    \item Đảm bảo an toàn thông tin, phòng chống các cuộc tấn công mạng.
+    \item Khả năng mở rộng quy mô hệ thống để phục vụ lượng lớn người dùng trong tương lai.
+    \item Tổng hợp báo cáo về hiệu suất sử dụng tài nguyên và tình trạng thiết bị.
+\end{itemize}
+
+\subsection{Yêu cầu chức năng và phi chức năng}
+
+\subsubsection{Yêu cầu chức năng}
+\textbf{Đối với hệ thống chung:}
+\begin{itemize}
+    \item Tự động thu thập dữ liệu độ ẩm đất và điều khiển máy bơm theo các kịch bản lập trình sẵn.
+    \item Hiển thị thông báo trạng thái lên màn hình LCD tại chỗ và đồng bộ hóa với ứng dụng từ xa.
+    \item Duy trì song song hai chế độ vận hành: tự động và thủ công.
+    \item Tự động chuyển sang chế độ thủ công và phát cảnh báo trước khi xảy ra lỗi hệ thống nghiêm trọng.
+\end{itemize}
+
+\textbf{Đối với người dùng cuối:}
+\begin{itemize}
+    \item Cung cấp biểu đồ trực quan về nhiệt độ, độ ẩm và ánh sáng theo thời gian thực.
+    \item Cho phép tùy chỉnh ngưỡng kích hoạt tưới và thiết lập lịch trình tưới lặp lại.
+    \item Nhận thông báo đẩy (push notification) khi các chỉ số môi trường bất thường.
+\end{itemize}
+
+\subsubsection{Yêu cầu phi chức năng}
+\begin{itemize}
+    \item \textbf{Hiệu suất:} Phản hồi các thao tác cơ bản trong vòng 2 giây; hỗ trợ ổn định 200 người dùng cùng lúc và xử lý tối đa 350 người dùng/phút trong giờ cao điểm. Thời gian trễ lệnh điều khiển IoT không quá 30 giây.
+    \item \textbf{Bảo mật:} Xác thực người dùng trong vòng 3 giây; mã hóa mật khẩu bằng thuật toán SHA-256; phân quyền truy cập chặt chẽ theo vai trò (người dùng, kỹ thuật, quản trị).
+    \item \textbf{Khả năng mở rộng:} Thiết kế theo kiến trúc microservices để dễ dàng nâng cấp; hỗ trợ tích hợp các cổng thanh toán điện tử và các mô hình trí tuệ nhân tạo (AI/ML) để tối ưu hóa việc tưới tiêu.
+    \item \textbf{Khả năng sử dụng:} Giao diện thân thiện, đa ngôn ngữ (tiếng Việt, tiếng Anh); tương thích tốt trên các trình duyệt phổ biến (Chrome, Edge, Firefox) và tự động điều chỉnh hiển thị (responsive) theo kích thước màn hình thiết bị.
+    \item \textbf{Độ tin cậy:} Cam kết thời gian hoạt động (uptime) đạt 99.9\%/năm; thời gian khôi phục sau sự cố (RTO) dưới 30 phút.
+    \item \textbf{Bảo trì và lưu trữ:} Lịch sử hoạt động được lưu trữ tối thiểu 5 năm; thực hiện sao lưu dữ liệu lên nền tảng đám mây (ví dụ: Firebase) mỗi 24 giờ; các đợt nâng cấp hệ thống được thực hiện vào khung giờ thấp điểm (01:00 - 05:00).
+\end{itemize}
